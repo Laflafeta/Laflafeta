@@ -1,0 +1,287 @@
+:root {
+    /* باليت ألوان سوفت وهادية جداً */
+    --soft-pink: #fff0f5;       /* لون وردي فاتح جداً للخلفيات */
+    --medium-pink: #fce4ec;     /* للحدود والأزرار الفرعية */
+    --deep-pink: #f06292;       /* اللون الأساسي للنصوص المهمة والأزرار */
+    --white: #ffffff;
+    --light-bg: #fffbfd;        /* خلفية الصفحة */
+    --text-gray: #6d4c41;       /* لون نص بني دافئ بدلاً من الرمادي القاسي */
+    --shadow: 0 12px 30px rgba(240, 98, 146, 0.1); /* ظل ناعم وردي */
+    --glass-bg: rgba(255, 255, 255, 0.8);
+}
+
+/* الإعدادات العامة */
+* { 
+    box-sizing: border-box; 
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* حركة أنعم */
+}
+
+body {
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    margin: 0;
+    background-color: var(--light-bg);
+    color: var(--text-gray);
+    direction: rtl;
+    line-height: 1.6;
+}
+
+/* الهيدر واللوجو */
+header {
+    background-color: var(--glass-bg);
+    backdrop-filter: blur(10px); /* تأثير الزجاج الضبابي */
+    padding: 12px 6%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 5px 25px rgba(240, 98, 146, 0.08);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 1px solid var(--soft-pink);
+}
+
+.logo-area {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+}
+
+#main-logo {
+    height: 80px;
+    width: 80px;
+    border-radius: 50%;
+    border: 4px solid var(--white);
+    box-shadow: 0 4px 15px rgba(240, 98, 146, 0.15);
+    object-fit: cover;
+}
+
+#main-logo:hover {
+    transform: scale(1.05) rotate(-3deg);
+}
+
+.brand-text h1 {
+    color: var(--deep-pink);
+    margin: 0;
+    font-size: 1.8rem;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+}
+
+/* زر السلة */
+.cart-btn {
+    background: linear-gradient(135deg, #f48fb1, #f06292); /* تدرج سوفت */
+    padding: 10px 25px;
+    border-radius: 30px;
+    cursor: pointer;
+    font-weight: 600;
+    color: white;
+    border: none;
+    box-shadow: 0 6px 15px rgba(240, 98, 146, 0.3);
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.cart-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(240, 98, 146, 0.4);
+}
+
+.container { 
+    max-width: 1200px; 
+    margin: 0 auto; 
+    padding: 20px; 
+}
+
+/* التنقل بين الأقسام */
+.categories-nav { 
+    text-align: center; 
+    padding: 25px 0; 
+    overflow-x: auto; 
+    white-space: nowrap;
+    scrollbar-width: none; /* إخفاء السكرول بار في فايرفوكس */
+}
+
+.categories-nav::-webkit-scrollbar { display: none; } /* إخفاء السكرول بار في كروم */
+
+.categories-nav button {
+    background: var(--white);
+    border: 1.5px solid var(--medium-pink);
+    padding: 8px 22px;
+    margin: 6px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: 600;
+    color: var(--deep-pink);
+    font-size: 0.95rem;
+}
+
+.categories-nav button.active {
+    background: var(--deep-pink);
+    color: white;
+    border-color: var(--deep-pink);
+    box-shadow: 0 4px 12px rgba(240, 98, 146, 0.2);
+}
+
+/* كروت المنتجات */
+#product-display { 
+    display: grid; 
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); 
+    gap: 30px; 
+}
+
+.product-card {
+    background: var(--white);
+    border-radius: 35px; /* حواف دائرية أكتر لزيادة الـ Softness */
+    padding: 18px;
+    text-align: center;
+    box-shadow: var(--shadow);
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    position: relative;
+}
+
+.product-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 35px rgba(240, 98, 146, 0.15);
+}
+
+.product-card img { 
+    width: 100%; 
+    height: 280px; 
+    object-fit: cover; 
+    border-radius: 28px; 
+    margin-bottom: 12px; 
+}
+
+/* إضافة استايل للوصف اللي طلبت تظهره */
+.card-desc {
+    font-size: 0.85rem;
+    color: #8d6e63;
+    margin: 5px 10px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    min-height: 2.5em;
+}
+
+.price { 
+    font-size: 1.3rem; 
+    color: var(--deep-pink); 
+    font-weight: 700; 
+    display: block; 
+    margin: 12px 0; 
+}
+
+.add-btn { 
+    width: 100%; 
+    padding: 14px; 
+    background: var(--soft-pink); 
+    border: none; 
+    border-radius: 20px; 
+    color: var(--deep-pink); 
+    font-weight: 700; 
+    cursor: pointer; 
+    font-size: 0.95rem;
+}
+
+.add-btn:hover { 
+    background: var(--deep-pink); 
+    color: white; 
+}
+
+/* قسم السلة وتأكيد الطلب */
+#cart-section {
+    display: none;
+    background: var(--white);
+    padding: 40px;
+    border-radius: 40px;
+    margin: 40px auto;
+    max-width: 550px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.05);
+    border: 1px solid var(--soft-pink);
+    text-align: center;
+}
+
+#cart-section img { 
+    width: 70px; 
+    height: 70px; 
+    border-radius: 50%; 
+    margin-bottom: 20px; 
+    border: 3px solid var(--soft-pink); 
+}
+
+.form-group { 
+    margin-bottom: 18px; 
+    text-align: right; 
+}
+
+.form-group input, .form-group select { 
+    width: 100%; 
+    padding: 15px; 
+    border: 1.5px solid var(--soft-pink); 
+    border-radius: 18px; 
+    font-size: 0.95rem;
+    background-color: var(--light-bg);
+    color: var(--text-gray);
+    outline: none;
+}
+
+.form-group input:focus {
+    border-color: var(--deep-pink);
+    background-color: white;
+}
+
+/* الفوتر وأيقونات التواصل */
+footer { 
+    background: var(--white); 
+    padding: 40px 20px; 
+    text-align: center; 
+    border-top: 1px solid var(--soft-pink); 
+    margin-top: 80px; 
+}
+
+.social-links { 
+    display: flex; 
+    justify-content: center; 
+    gap: 20px; 
+    margin-top: 20px; 
+}
+
+.social-links a { 
+    text-decoration: none; 
+    font-size: 2.2rem; 
+    transition: all 0.3s ease; 
+    opacity: 0.8;
+}
+
+.social-links a:hover { 
+    transform: translateY(-5px); 
+    opacity: 1;
+}
+
+.fa-whatsapp { color: #4caf50; } 
+.fa-instagram { color: #d81b60; } 
+.fa-tiktok { color: #212121; }
+
+/* رسالة لا يوجد منتجات */
+.no-data { 
+    text-align: center; 
+    padding: 60px; 
+    color: var(--deep-pink); 
+    font-weight: 600; 
+    font-size: 1.1rem;
+    grid-column: 1 / -1;
+}
+
+/* تحسينات الموبايل */
+@media (max-width: 600px) {
+    #main-logo { height: 60px; width: 60px; }
+    .brand-text h1 { font-size: 1.4rem; }
+    header { padding: 10px 4%; }
+    .product-card { border-radius: 30px; padding: 12px; }
+    .product-card img { height: 220px; }
+}
